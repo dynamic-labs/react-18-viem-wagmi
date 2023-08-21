@@ -1,5 +1,5 @@
 
-import { DynamicWagmiConnector } from '@dynamic-labs/wagmi-connector@viem';
+import { DynamicWagmiConnector } from '@dynamic-labs/wagmi-connector';
 import { DynamicContextProvider, DynamicWidget } from '@dynamic-labs/sdk-react';
 const App = () => {
 return (
