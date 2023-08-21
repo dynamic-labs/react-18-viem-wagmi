@@ -1540,6 +1540,11 @@
   dependencies:
     "@dynamic-labs/types" "0.18.100-viem.5"
 
+"@dynamic-labs/wagmi-connector@^0.18.100-viem.5":
+  version "0.18.100-viem.5"
+  resolved "https://registry.yarnpkg.com/@dynamic-labs/wagmi-connector/-/wagmi-connector-0.18.100-viem.5.tgz#c702d8b43e3dfec63afb5ac024c24022813e25b4"
+  integrity sha512-XCB3JW0BHT2N90g9MgRaXnQtAoG77HOA/5OVQFCaNt5B7u+gqYKKmQ89J2bifSAwGRG3iwF9O3xDlpfoGhZ1qQ==
+
 "@dynamic-labs/wallet-book@0.18.100-viem.5":
   version "0.18.100-viem.5"
   resolved "https://registry.yarnpkg.com/@dynamic-labs/wallet-book/-/wallet-book-0.18.100-viem.5.tgz#bc28a2bf85c0ee0db615e06d7de2245cc141cd4d"
