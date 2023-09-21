@@ -5,7 +5,7 @@
   "dependencies": {
     "@dynamic-labs/sdk-react": "0.18.100-viem.17",
     "@dynamic-labs/wagmi-connector": "0.18.100-viem.17",
-    "@hookform/resolvers": "3.2.0",
+    "@hookform/resolvers": "3.3.1",
     "@mui/material": "5.12.1",
     "@mui/x-data-grid-premium": "6.4.0",
     "@mui/x-date-pickers-pro": "^6.10.1",
