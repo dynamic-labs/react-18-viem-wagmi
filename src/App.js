@@ -1,18 +1,27 @@
+import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
+import {
+  DynamicContextProvider,
+  DynamicWidget,
+} from "@dynamic-labs/sdk-react";
 
-import { DynamicWagmiConnector } from '@dynamic-labs/wagmi-connector';
-import { DynamicContextProvider, DynamicWidget } from '@dynamic-labs/sdk-react';
+import Home from "./components/Home";
+
+
 const App = () => {
-return (
+  return (
     <DynamicContextProvider
-    settings={{
-      environmentId: "8b5038f9-171c-480b-9f3c-294d868aeb74",
-    }}
+      settings={{
+        environmentId: "4e598b41-f388-489b-a0b3-d24064b1d1ed"
+      }}
     >
-    <DynamicWagmiConnector>
+      <DynamicWagmiConnector>
         <DynamicWidget />
-    </DynamicWagmiConnector>
+        <Home />
+      </DynamicWagmiConnector>
     </DynamicContextProvider>
-);
-}
+  );
+};
 
 export default App;
+
+
