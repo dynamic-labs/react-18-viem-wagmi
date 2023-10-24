@@ -48,27 +48,23 @@ const FLAVORS = {
 
 const Demo = () => {
   const { createEmbeddedWallet } = useEmbeddedWallet();
-  const [flavor, setFlavor] = useState(FLAVORS.Wallets);
   const {projectSettings, user} = useDynamicContext();
 
-
-  useEffect(() => {
-    if(projectSettings?.sdk) {
-      if (flavor === FLAVORS.Wallets) {
-        projectSettings.sdk.views = [WALLET_VIEW];
-      } else if (flavor === FLAVORS.EmailSso) {
-        projectSettings.sdk.views = [Email_SSO];
-      }
-    }
-}, [flavor]);
+//   useEffect(() => {
+//     if(projectSettings?.sdk) {
+//       if (flavor === FLAVORS.Wallets) {
+//         projectSettings.sdk.views = [WALLET_VIEW];
+//       } else if (flavor === FLAVORS.EmailSso) {
+//         projectSettings.sdk.views = [Email_SSO];
+//       }
+//     }
+// }, [flavor]);
 
 
 return (
   <div>
 {flavor}
- <button type='button' onClick={() => setFlavor(FLAVORS.Wallets)}> Wallets only </button>
- <button type='button' onClick={() => setFlavor(FLAVORS.EmailSso)}> Email and SSO </button>
- <button type='button' onClick={() => setFlavor(FLAVORS.EmbeddedAndWallets)}> Embeded and Wallets </button>
+
 
  {user && flavor === FLAVORS.EmbeddedAndWallets &&
   <button type='button' onClick={() => createEmbeddedWallet()}> createEmbeddedWallet </button>}
@@ -79,15 +75,19 @@ return (
 
 
 
-const App = () => {
-
-
-
+const App2 = () => {
+  const [flavor, setFlavor] = useState(FLAVORS.Wallets);
   return (
-    <DynamicContextProvider
+    <div>
+    <button type='button' onClick={() => setFlavor(FLAVORS.Wallets)}> Wallets only </button>
+    <button type='button' onClick={() => setFlavor(FLAVORS.EmailSso)}> Email and SSO </button>
+    <button type='button' onClick={() => setFlavor(FLAVORS.EmbeddedAndWallets)}> Embeded and Wallets </button>
+
+    {flavor === FLAVORS.WALLETS && <DynamicContextProvider
       settings={{
         environmentId: "fa3bb3e5-319a-43a2-a6d4-dd1427b84970",
         walletConnectors: [EthereumWalletConnectors],
+        overrides: {views []}
       }}
     >
       <DynamicWagmiConnector>
@@ -95,6 +95,7 @@ const App = () => {
         <Demo />
       </DynamicWagmiConnector>
     </DynamicContextProvider>
+    </div>
   );
 };
 
