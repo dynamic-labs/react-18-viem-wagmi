@@ -21,7 +21,7 @@ const EMAIL_SSO_VIEW = {
   type: SdkViewType.Login,
   sections: [
     {
-      type: SdkViewSectionType.Wallet,
+      type: SdkViewSectionType.Email,
     },
     {
       type: SdkViewSectionType.Separator,
@@ -47,10 +47,13 @@ const Demo = ({ setViewOverrides }) => {
 
   useEffect(() => {
     if (flavor === FLAVORS.Wallets) {
-      setViewOverrides(WALLET_VIEW);
+      setViewOverrides([WALLET_VIEW]);
     } else if (flavor === FLAVORS.EmailSso) {
-      setViewOverrides(EMAIL_SSO_VIEW);
+      setViewOverrides([EMAIL_SSO_VIEW]);
+    } else {
+      setViewOverrides([]);
     }
+  
   }, [flavor]);
 
   return (
