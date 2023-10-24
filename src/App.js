@@ -1,18 +1,14 @@
-import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import {
   DynamicContextProvider,
   DynamicWidget,
-  LocalStorage,
   useDynamicContext,
   useEmbeddedWallet,
 } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
-import { useEffect, useState, Button } from "react";
-import { useFetchProjectSettings } from "@dynamic-labs/sdk-react-core";
+import { useEffect, useState } from "react";
 import { SdkViewSectionType, SdkViewType } from "@dynamic-labs/sdk-api";
 
-const WALLET_VIEW =
-{
+const WALLET_VIEW = {
   type: SdkViewType.Login,
   sections: [
     {
@@ -21,68 +17,76 @@ const WALLET_VIEW =
   ],
 };
 
-const Email_SSO =
-{
-type: SdkViewType.Login,
-sections: [
-
-  {
-    type: SdkViewSectionType.Wallet
-  },
-  {
-    type: SdkViewSectionType.Separator,
-    label: 'Or',
-  },
-  {
-    type: SdkViewSectionType.Social,
-    defaultItem: 'google',
-  },
-],
+const Email_SSO = {
+  type: SdkViewType.Login,
+  sections: [
+    {
+      type: SdkViewSectionType.Wallet,
+    },
+    {
+      type: SdkViewSectionType.Separator,
+      label: "Or",
+    },
+    {
+      type: SdkViewSectionType.Social,
+      defaultItem: "google",
+    },
+  ],
 };
 
 const FLAVORS = {
   Wallets: "wallet",
   EmailSso: "emailSso",
   EmbeddedAndWallets: "embeddedAndWallets",
-}
+};
 
 const Demo = () => {
-  const { createEmbeddedWallet } = useEmbeddedWallet();
   const [flavor, setFlavor] = useState(FLAVORS.Wallets);
-  const {projectSettings, user} = useDynamicContext();
-
+  const { createEmbeddedWallet } = useEmbeddedWallet();
+  const { projectSettings, user } = useDynamicContext();
 
   useEffect(() => {
-    if(projectSettings?.sdk) {
+    console.log(projectSettings);
+    if (projectSettings?.sdk) {
       if (flavor === FLAVORS.Wallets) {
-        projectSettings.sdk.views = [WALLET_VIEW];
+        //   projectSettings.sdk.views = [WALLET_VIEW];
       } else if (flavor === FLAVORS.EmailSso) {
-        projectSettings.sdk.views = [Email_SSO];
+        // projectSettings.sdk.views = [Email_SSO];
       }
     }
-}, [flavor]);
+  }, [flavor]);
 
+  return (
+    <div>
+      {projectSettings}
 
-return (
-  <div>
-{flavor}
- <button type='button' onClick={() => setFlavor(FLAVORS.Wallets)}> Wallets only </button>
- <button type='button' onClick={() => setFlavor(FLAVORS.EmailSso)}> Email and SSO </button>
- <button type='button' onClick={() => setFlavor(FLAVORS.EmbeddedAndWallets)}> Embeded and Wallets </button>
+      <button type="button" onClick={() => setFlavor(FLAVORS.Wallets)}>
+        {" "}
+        Wallets only{" "}
+      </button>
+      <button type="button" onClick={() => setFlavor(FLAVORS.EmailSso)}>
+        {" "}
+        Email and SSO{" "}
+      </button>
+      <button
+        type="button"
+        onClick={() => setFlavor(FLAVORS.EmbeddedAndWallets)}
+      >
+        {" "}
+        Embeded and Wallets{" "}
+      </button>
 
- {user && flavor === FLAVORS.EmbeddedAndWallets &&
-  <button type='button' onClick={() => createEmbeddedWallet()}> createEmbeddedWallet </button>}
-
- </div>
-)
-}
-
-
+      {user && flavor === FLAVORS.EmbeddedAndWallets && (
+        <button type="button" onClick={() => createEmbeddedWallet()}>
+          {" "}
+          createEmbeddedWallet{" "}
+        </button>
+      )}
+    </div>
+  );
+};
 
 const App = () => {
-
-
-
   return (
     <DynamicContextProvider
       settings={{
@@ -90,10 +94,8 @@ const App = () => {
         walletConnectors: [EthereumWalletConnectors],
       }}
     >
-      <DynamicWagmiConnector>
-        <DynamicWidget />
-        <Demo />
-      </DynamicWagmiConnector>
+      <DynamicWidget />
+      {/* <Demo /> */}
     </DynamicContextProvider>
   );
 };
