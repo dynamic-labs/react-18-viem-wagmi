@@ -17,7 +17,7 @@ const WALLET_VIEW = {
   ],
 };
 
-const Email_SSO = {
+const EMAIL_SSO_VIEW = {
   type: SdkViewType.Login,
   sections: [
     {
@@ -40,26 +40,21 @@ const FLAVORS = {
   EmbeddedAndWallets: "embeddedAndWallets",
 };
 
-const Demo = () => {
+const Demo = ({ setViewOverrides }) => {
   const [flavor, setFlavor] = useState(FLAVORS.Wallets);
   const { createEmbeddedWallet } = useEmbeddedWallet();
-  const { projectSettings, user } = useDynamicContext();
+  const { user } = useDynamicContext();
 
   useEffect(() => {
-    console.log(projectSettings);
-    if (projectSettings?.sdk) {
-      if (flavor === FLAVORS.Wallets) {
-        //   projectSettings.sdk.views = [WALLET_VIEW];
-      } else if (flavor === FLAVORS.EmailSso) {
-        // projectSettings.sdk.views = [Email_SSO];
-      }
+    if (flavor === FLAVORS.Wallets) {
+      setViewOverrides(WALLET_VIEW);
+    } else if (flavor === FLAVORS.EmailSso) {
+      setViewOverrides(EMAIL_SSO_VIEW);
     }
   }, [flavor]);
 
   return (
     <div>
-      {projectSettings}
-
       <button type="button" onClick={() => setFlavor(FLAVORS.Wallets)}>
         {" "}
         Wallets only{" "}
@@ -87,15 +82,17 @@ const Demo = () => {
 };
 
 const App = () => {
+  const [viewOverrides, setViewOverrides] = useState([]);
   return (
     <DynamicContextProvider
       settings={{
         environmentId: "fa3bb3e5-319a-43a2-a6d4-dd1427b84970",
         walletConnectors: [EthereumWalletConnectors],
+        overrides: { views: viewOverrides },
       }}
     >
       <DynamicWidget />
-      {/* <Demo /> */}
+      <Demo setViewOverrides={setViewOverrides} />
     </DynamicContextProvider>
   );
 };
