@@ -34,6 +34,28 @@ const EMAIL_SSO_VIEW = {
   ],
 };
 
+const SSO_AND_WALLETS_VIEW = {
+  type: SdkViewType.Login,
+  sections: [
+    { type: SdkViewSectionType.Wallet },
+    {
+      type: SdkViewSectionType.Separator,
+      label: "Or",
+    },
+    {
+      type: SdkViewSectionType.Email,
+    },
+    {
+      type: SdkViewSectionType.Separator,
+      label: "Or",
+    },
+    {
+      type: SdkViewSectionType.Social,
+      defaultItem: "google",
+    },
+  ],
+};
+
 const FLAVORS = {
   Wallets: "wallet",
   EmailSso: "emailSso",
@@ -42,18 +64,28 @@ const FLAVORS = {
 
 const Demo = ({ setViewOverrides }) => {
   const [flavor, setFlavor] = useState(FLAVORS.Wallets);
-  const { createEmbeddedWallet } = useEmbeddedWallet();
   const { user } = useDynamicContext();
+  const { createEmbeddedWallet, userHasEmbeddedWallet } = useEmbeddedWallet();
+
+  const createWalletIfNeeded = async () => {
+    if (!userHasEmbeddedWallet()) {
+      try {
+        const walletId = await createEmbeddedWallet();
+        console.log("created wallet: ", walletId);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  };
 
   useEffect(() => {
     if (flavor === FLAVORS.Wallets) {
       setViewOverrides([WALLET_VIEW]);
     } else if (flavor === FLAVORS.EmailSso) {
       setViewOverrides([EMAIL_SSO_VIEW]);
-    } else {
-      setViewOverrides([]);
+    } else if (flavor === FLAVORS.EmbeddedAndWallets) {
+      setViewOverrides([SSO_AND_WALLETS_VIEW]);
     }
-  
   }, [flavor]);
 
   return (
@@ -75,7 +107,7 @@ const Demo = ({ setViewOverrides }) => {
       </button>
 
       {user && flavor === FLAVORS.EmbeddedAndWallets && (
-        <button type="button" onClick={() => createEmbeddedWallet()}>
+        <button type="button" onClick={() => createWalletIfNeeded()}>
           {" "}
           createEmbeddedWallet{" "}
         </button>
