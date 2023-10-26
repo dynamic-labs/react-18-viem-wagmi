@@ -7,7 +7,7 @@
     "@dynamic-labs/blocto": "^0.19.0-alpha.20",
     "@dynamic-labs/cosmos": "^0.19.0-alpha.21",
     "@dynamic-labs/ethereum": "^0.19.0-alpha.21",
-    "@dynamic-labs/flow": "^0.19.0-alpha.21",
+    "@dynamic-labs/flow": "^0.19.0-alpha.26",
     "@dynamic-labs/magic": "^0.19.0-alpha.21",
     "@dynamic-labs/sdk-react-core": "^0.19.0-alpha.21",
     "@dynamic-labs/solana": "^0.19.0-alpha.21",
