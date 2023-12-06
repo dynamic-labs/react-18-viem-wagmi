@@ -5,7 +5,7 @@
   "dependencies": {
     "@dynamic-labs/algorand": "^0.19.0",
     "@dynamic-labs/blocto-evm": "^0.19.0",
-    "@dynamic-labs/cosmos": "^0.19.0",
+    "@dynamic-labs/cosmos": "^0.19.5",
     "@dynamic-labs/ethereum": "^0.19.0",
     "@dynamic-labs/flow": "^0.19.0",
     "@dynamic-labs/magic": "^0.19.0",
