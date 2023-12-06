@@ -79,6 +79,7 @@ const Demo = ({ setViewOverrides }) => {
   };
 
   useEffect(() => {
+    console.log("setting", flavor);
     if (flavor === FLAVORS.Wallets) {
       setViewOverrides([WALLET_VIEW]);
     } else if (flavor === FLAVORS.EmailSso) {
@@ -90,22 +91,25 @@ const Demo = ({ setViewOverrides }) => {
 
   return (
     <div>
-      <button type="button" onClick={() => setFlavor(FLAVORS.Wallets)}>
-        {" "}
-        Wallets only{" "}
-      </button>
-      <button type="button" onClick={() => setFlavor(FLAVORS.EmailSso)}>
-        {" "}
-        Email and SSO{" "}
-      </button>
-      <button
-        type="button"
-        onClick={() => setFlavor(FLAVORS.EmbeddedAndWallets)}
-      >
-        {" "}
-        Embeded and Wallets{" "}
-      </button>
-
+      {!user && (
+        <div>
+          <button type="button" onClick={() => setFlavor(FLAVORS.Wallets)}>
+            {" "}
+            Wallets only{" "}
+          </button>
+          <button type="button" onClick={() => setFlavor(FLAVORS.EmailSso)}>
+            {" "}
+            Email and SSO{" "}
+          </button>
+          <button
+            type="button"
+            onClick={() => setFlavor(FLAVORS.EmbeddedAndWallets)}
+          >
+            {" "}
+            Embeded and Wallets{" "}
+          </button>{" "}
+        </div>
+      )}
       {user && flavor === FLAVORS.EmbeddedAndWallets && (
         <button type="button" onClick={() => createWalletIfNeeded()}>
           {" "}
