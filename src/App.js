@@ -4,6 +4,7 @@ import {
   DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
 import { AlgorandWalletConnectors } from "@dynamic-labs/algorand";
 import { SolanaWalletConnectors } from "@dynamic-labs/solana";
 import { FlowWalletConnectors } from "@dynamic-labs/flow";
@@ -21,6 +22,7 @@ const App = () => {
         environmentId: "2762a57b-faa4-41ce-9f16-abff9300e2c9",
         walletConnectors: [
           EthereumWalletConnectors,
+          ZeroDevSmartWalletConnectors,
           AlgorandWalletConnectors,
           SolanaWalletConnectors,
           FlowWalletConnectors,
