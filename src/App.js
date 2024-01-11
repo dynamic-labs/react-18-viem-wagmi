@@ -4,14 +4,6 @@ import {
   DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
-import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
-import { AlgorandWalletConnectors } from "@dynamic-labs/algorand";
-import { SolanaWalletConnectors } from "@dynamic-labs/solana";
-import { FlowWalletConnectors } from "@dynamic-labs/flow";
-import { StarknetWalletConnectors } from "@dynamic-labs/starknet";
-import { CosmosWalletConnectors } from "@dynamic-labs/cosmos";
-import { MagicWalletConnectors } from "@dynamic-labs/magic";
-import { BloctoEvmWalletConnectors } from "@dynamic-labs/blocto-evm";
 
 import Wagmi from "./Wagmi";
 import Main from "./Main";
@@ -20,18 +12,8 @@ const App = () => {
   return (
     <DynamicContextProvider
       settings={{
-        environmentId: "2762a57b-faa4-41ce-9f16-abff9300e2c9",
-        walletConnectors: [
-          EthereumWalletConnectors,
-          ZeroDevSmartWalletConnectors,
-          AlgorandWalletConnectors,
-          SolanaWalletConnectors,
-          FlowWalletConnectors,
-          StarknetWalletConnectors,
-          CosmosWalletConnectors,
-          MagicWalletConnectors,
-          BloctoEvmWalletConnectors,
-        ],
+        environmentId: "4e598b41-f388-489b-a0b3-d24064b1d1ed",
+        walletConnectors: [EthereumWalletConnectors],
       }}
     >
       <DynamicWagmiConnector>

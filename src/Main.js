@@ -1,12 +1,16 @@
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 const Main = () => {
-  const { setShowLinkNewWalletModal } = useDynamicContext();
+  const { setShowLinkNewWalletModal, isAuthenticated } = useDynamicContext();
 
   return (
-    <button onClick={() => setShowLinkNewWalletModal(true)}>
-      Show Link Modal
-    </button>
+    <>
+      {isAuthenticated && (
+        <button onClick={() => setShowLinkNewWalletModal(true)}>
+          Show Link Modal
+        </button>
+      )}
+    </>
   );
 };
 
