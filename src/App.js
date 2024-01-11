@@ -14,6 +14,7 @@ import { MagicWalletConnectors } from "@dynamic-labs/magic";
 import { BloctoEvmWalletConnectors } from "@dynamic-labs/blocto-evm";
 
 import Wagmi from "./Wagmi";
+import Main from "./Main";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
       <DynamicWagmiConnector>
         <Wagmi />
         <DynamicWidget />
+        <Main />
       </DynamicWagmiConnector>
     </DynamicContextProvider>
   );
