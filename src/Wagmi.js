@@ -5,9 +5,9 @@ const Wagmi = () => {
   const { authToken, isAuthenticated } = useDynamicContext();
   const { address } = useAccount();
 
-  console.log("isAuthenticated", isAuthenticated);
-  console.log("authToken", authToken);
-  console.log("address", address);
+  // console.log("isAuthenticated", isAuthenticated);
+  // console.log("authToken", authToken);
+  // console.log("address", address);
 
   return <></>;
 };
