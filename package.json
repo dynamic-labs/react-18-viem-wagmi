@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@dynamic-labs/ethereum": "*",
-    "@dynamic-labs/sdk-react-core": "*",
-    "@dynamic-labs/wagmi-connector": "*",
+    "@dynamic-labs/ethereum": "^1.0.0",
+    "@dynamic-labs/sdk-react-core": "^1.0.0",
+    "@dynamic-labs/wagmi-connector": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "wagmi": "^1.0.0",
+    "viem": "^1.0.0"
   },
   "overrides": {
     "typescript": "4.9.5"
